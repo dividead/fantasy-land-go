@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	a "github.com/reactima/fantasy-land/algebra"
+	a "github.com/dividead/fantasy-land-go/algebra"
 )
 
 func main() {
