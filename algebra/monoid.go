@@ -11,6 +11,6 @@ type Monoid struct {
 
 // Empty :: Monoid m => () -> m
 func Empty() *Monoid {
-	x := Semigroup.NewSemigroup(Semigroup{})
+	x := new(Monoid)
 	return x
 }

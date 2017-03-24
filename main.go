@@ -11,6 +11,11 @@ func main() {
 	_ = new(a.Setoid)
 	fmt.Println("unicorns")
 
+	m := new(a.Monoid)
+
+	m1 := a.Empty().Concat(m)
+	m2 := m.Concat(a.Empty())
+
 }
 
 // func pipe(fs ...any) {
