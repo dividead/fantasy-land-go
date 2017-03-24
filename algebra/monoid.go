@@ -1,12 +1,12 @@
 package algebra
 
 type monoid interface {
-	Empty()
+	Empty() // Monoid
 }
 
 // Monoid algebra
 type Monoid struct {
-	*Semigroup
+	Semigroup
 }
 
 // Empty :: Monoid m => () -> m

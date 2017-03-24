@@ -2,13 +2,15 @@ package algebra
 
 import "reflect"
 
-type semigroup interface {
-	Concat()
+// Isemigroup interface
+type Isemigroup interface {
+	Concat(Isemigroup) Isemigroup
+	List() []interface{}
 }
 
 // Semigroup algebra
 type Semigroup struct {
-	List []interface{}
+	L []interface{}
 }
 
 // Add Elements To Semigroup
@@ -25,7 +27,7 @@ func (s *Semigroup) Add(args ...interface{}) *Semigroup {
 		}
 	}
 
-	s.List = append(s.List, args...)
+	s.L = append(s.L, args...)
 	return s
 }
 
@@ -46,9 +48,14 @@ func (s *Semigroup) Add(args ...interface{}) *Semigroup {
 // }
 
 // Concat :: Semigroup a => a ~> a -> a
-func (s *Semigroup) Concat(z *Semigroup) *Semigroup {
+func (s Semigroup) Concat(s1 Isemigroup) Isemigroup {
 	x := new(Semigroup)
-	x.Add(s.List...)
-	x.Add(z.List...)
+	x.Add(s.List()...)
+	x.Add(s1.List()...)
 	return x
+}
+
+// List returns internal slice
+func (s Semigroup) List() []interface{} {
+	return s.L
 }
